@@ -26,7 +26,6 @@ class Grafik extends CI_Controller {
     $this->highcharts->set_title('Rata-rata Tiap Semester');
     $this->highcharts->set_xAxis($graph_data['axis']);
     $this->highcharts->set_axis_titles('Jumlah Santri =','Nilai');
-    $this->highcharts->set_axis_titles('Munaqosyah','Nilai');
     $this->highcharts->set_axis_titles('Munaqosyah','Nilai');    
     $data = [
       'grafik1'=>$this->highcharts->set_serie($rerata)->render(),

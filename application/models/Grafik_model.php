@@ -73,7 +73,8 @@ class Grafik_model extends CI_Model {
     $query = $this->db->get('uas')->result_array();
     
     foreach ($query as $row) {
-      $data[] = $row['uas'];
+      $siswa = $this->db->where('id_uas',$row['id_uas'])->count_all_results('ujian');
+      $data[] = $row['uas'].' ('.$siswa.' siswa)';
     }
     
     return $data;
@@ -110,7 +111,7 @@ class Grafik_model extends CI_Model {
       ->join('siswa','ujian.id_siswa=siswa.id_siswa','left')
       ->join('uas','ujian.id_uas=uas.id_uas','left')
       ->group_by('uas.id_uas')
-      ->order_by('ujian.id_kelas')
+      // ->order_by('ujian.id_kelas')
       ->get('ujian')
       ->result_array();
 
